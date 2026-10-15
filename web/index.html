@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>1B Human Speech System</title>
+<link rel="stylesheet" href="/static/style.css" />
+</head>
+<body>
+  <div class="stage">
+    <div class="left">
+      <canvas id="face" width="560" height="760"></canvas>
+      <div id="subtitle" class="subtitle">—</div>
+    </div>
+
+    <div class="right">
+      <header>
+        <h1>1B Human Speech System</h1>
+        <p class="tagline">llama3.2:1b controls every muscle in the face and throat — the raw physics of speech.</p>
+        <div id="status" class="status">connecting…</div>
+      </header>
+
+      <section class="panel">
+        <h2>Who is speaking?</h2>
+        <div id="personas" class="personas"></div>
+      </section>
+
+      <section class="panel">
+        <h2>Throat voice</h2>
+        <p class="hint">A full articulatory synthesizer: the same 13 muscles that move the face also shape the sound.</p>
+        <label class="check"><input type="checkbox" id="ttsToggle" checked /> Speak aloud</label>
+      </section>
+
+      <section class="panel chat-panel">
+        <h2>Say something</h2>
+        <div id="log" class="log"></div>
+        <form id="chatForm">
+          <input id="chatInput" type="text" placeholder="Talk to the face…" autocomplete="off" />
+          <button id="sendBtn" type="submit">Send</button>
+        </form>
+        <div class="suggestions">
+          <button data-line="Tell me a joke.">A joke</button>
+          <button data-line="Are you excited about anything today?">Excited?</button>
+          <button data-line="What's on your mind right now?">Thinking?</button>
+          <button data-line="Say hello in a surprised way.">Surprised hello</button>
+          <button data-line="Pretend you just tasted something delicious.">Yum</button>
+          <button data-line="Explain something you love, slowly and carefully.">Passion</button>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script src="/static/face.js"></script>
+  <script src="/static/throat.js"></script>
+  <script src="/static/app.js"></script>
+</body>
+</html>

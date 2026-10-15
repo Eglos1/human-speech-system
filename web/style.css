@@ -1,0 +1,172 @@
+:root {
+  --bg: #10131d;
+  --panel: #1a2030;
+  --panel-2: #232a3d;
+  --text: #e8ecf4;
+  --muted: #8b93a7;
+  --accent: #6ea8ff;
+  --accent-2: #ff7b9c;
+  --ok: #4ade80;
+  --warn: #fbbf24;
+  --err: #f87171;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: "Segoe UI", system-ui, sans-serif;
+  background: radial-gradient(1200px 700px at 30% 20%, #1b2234 0%, var(--bg) 60%);
+  color: var(--text);
+  min-height: 100vh;
+}
+
+.stage {
+  display: flex;
+  gap: 28px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 26px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+/* ---- left: the face ---- */
+.left { flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; }
+#face {
+  width: 380px;
+  height: 516px;
+  border-radius: 20px;
+  background: #10131d;
+  box-shadow: 0 24px 70px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.06);
+}
+
+.subtitle {
+  margin-top: 14px;
+  min-height: 26px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.08);
+  font-size: 15px;
+  color: var(--muted);
+  max-width: 380px;
+  text-align: center;
+}
+
+/* ---- right: controls ---- */
+.right { flex: 1 1 460px; display: flex; flex-direction: column; gap: 18px; }
+
+header h1 {
+  font-size: 26px;
+  letter-spacing: 0.4px;
+}
+.tagline { color: var(--muted); margin-top: 4px; font-size: 14px; }
+
+.status {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  background: var(--panel-2);
+}
+.status.ok { color: var(--ok); }
+.status.warn { color: var(--warn); }
+
+.panel {
+  background: var(--panel);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 14px;
+  padding: 16px 18px;
+}
+.panel h2 {
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+.personas { display: flex; gap: 8px; flex-wrap: wrap; }
+.persona {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+.persona:hover { border-color: var(--accent); }
+.persona.active {
+  background: linear-gradient(135deg, var(--accent), #4f7fd6);
+  border-color: transparent;
+  font-weight: 600;
+}
+
+.hint {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+.check { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--muted); }
+.check input { accent-color: var(--accent); }
+
+.chat-panel { display: flex; flex-direction: column; }
+.log {
+  flex: 1;
+  min-height: 120px;
+  max-height: 220px;
+  overflow-y: auto;
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
+  padding: 12px;
+  margin-bottom: 12px;
+  font-size: 13px;
+}
+.log-line { margin-bottom: 6px; line-height: 1.4; }
+.log-line.user { color: var(--accent); }
+.log-line.error { color: var(--err); }
+.log-line.info { color: var(--muted); font-style: italic; }
+
+#chatForm { display: flex; gap: 8px; }
+#chatInput {
+  flex: 1;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  padding: 11px 14px;
+  font-size: 14px;
+  outline: none;
+}
+#chatInput:focus { border-color: var(--accent); }
+#sendBtn {
+  background: linear-gradient(135deg, var(--accent), #4f7fd6);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 20px;
+  font-weight: 600;
+  cursor: pointer;
+}
+#sendBtn:hover { filter: brightness(1.1); }
+
+.suggestions { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+.suggestions button {
+  background: transparent;
+  border: 1px dashed rgba(255,255,255,0.2);
+  color: var(--muted);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font-size: 12px;
+  cursor: pointer;
+}
+.suggestions button:hover { border-color: var(--accent-2); color: var(--accent-2); }
+
+@media (max-width: 900px) {
+  .stage { justify-content: center; }
+}

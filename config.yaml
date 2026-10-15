@@ -1,0 +1,39 @@
+# 1B Human Speech System
+#
+# The 1B LLM runs locally through Ollama and drives every raw muscle in a
+# digital face — AND the physical vocal apparatus — in real time.
+
+llm:
+  model: "llama3.2:1b"        # any 1B-class Ollama model works
+  base_url: "http://localhost:11434"
+  temperature: 0.4            # lower = the model holds the frame format better
+  max_tokens: 1024
+
+server:
+  host: "127.0.0.1"
+  port: 8000
+
+persona: "maya"               # default persona (see brain/persona.py)
+
+# The raw muscle channels the LLM controls per frame.
+muscles:
+  # face
+  - jaw          # 0 closed .. 100 wide open
+  - smile        # 0 .. 100 corners up-out
+  - pucker       # 0 .. 100 lips forward / pursed
+  - brows        # 0 furrowed .. 50 neutral .. 100 raised
+  - upperLip     # 0 .. 100 upper lip lifted (snarl)
+  - lowerLip     # 0 .. 100 lower lip dropped (sad/thinking)
+  - squint       # 0 wide .. 100 squeezed
+  # throat / voice (drive the articulatory synthesizer)
+  - air          # 0 silent .. 50 speech .. 100 shout (loudness)
+  - tension      # vocal-fold stretch = pitch (0 low .. 50 neutral .. 100 high)
+  - adduction    # vocal-fold closure (0 whisper .. 100 crisp voicing)
+  - velum        # nasal port (0 oral .. 80+ nasal like m/n/ng)
+  - fry          # vocal fry / creak (0 clean .. 100 gravelly)
+  - tongue       # tongue body (0 low-back 'ah' .. 50 mid .. 100 high-front 'ee')
+
+# Audio is produced by the in-browser ThroatEngine (articulatory synthesis),
+# not by browser TTS. Toggle "Speak aloud" in the UI to mute it.
+tts:
+  enabled: true
